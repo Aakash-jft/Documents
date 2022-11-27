@@ -8,6 +8,7 @@ let idd = null;
 let emp = new employee();
 let counter = 0;
 
+
 let arr2 = [];
 
 function data(name, job, salary, id) {

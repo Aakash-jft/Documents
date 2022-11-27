@@ -1,7 +1,7 @@
 function employee() {
     this.arr = [];
   
-    this.post =async function (obj) {
+    this.post =function (obj) {
 
       let p = new Promise((res,rej)=>{
         
@@ -43,7 +43,7 @@ function employee() {
       // }, 2000);
     };
   
-    this.del = function (id, cb) {
+    this.del = function (id) {
 
       let p  = new Promise((resolve, reject) => {
         

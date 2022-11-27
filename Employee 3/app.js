@@ -8,7 +8,11 @@ let idd = null;
 let emp = new employee();
 let counter = 0;
 
-let arr2 = [];
+let arr2  = JSON.parse(localStorage.getItem("Employees"))||[];
+
+if(arr2.length>0){
+  show(arr2);
+}
 
 function data(name, job, salary, id) {
   this.id = id;
@@ -25,12 +29,14 @@ btn.addEventListener("click",async () => {
 
 
    let arr = await emp.post(obj);
+   localStorage.setItem("Employees",JSON.stringify(arr));
    show(arr);
   
   } else {
 
     let obj = new data(name.value, job.value, salary.value, idd);
     let arr = await emp.put(obj);
+    localStorage.setItem("Employees",JSON.stringify(arr));
     show(arr);
     flag = true;
     
@@ -60,19 +66,15 @@ async function fetch(a) {
   flag = false;
 
 let obj = await emp.get(Number(a));
-
- 
     name.value = obj.name;
     job.value = obj.job;
     salary.value = obj.salary;
-    
-
-
 }
 
 async function delet(id){
 
     let arr = await emp.del(id);
+    localStorage.setItem("Employees",JSON.stringify(arr));
 
     show(arr);
     
