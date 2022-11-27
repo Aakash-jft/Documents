@@ -1,5 +1,5 @@
-function employee() {
-    this.arr = [];
+function employee(arr) {
+    this.arr = arr
   
     this.post =function (obj) {
 
@@ -21,6 +21,7 @@ function employee() {
       //   cb(this.arr);
       // }, 2000);
     };
+    
     this.put = function (obj, cb) {
       console.log(obj.id);
 
@@ -49,10 +50,11 @@ function employee() {
         
         setTimeout(()=>{
           this.arr.splice(
-            this.arr.findIndex((a) => a.id === id),
+            this.arr.findIndex((a) => Number(a.id) === Number(id)),
             1
           );
-          resolve(this.arr)
+          resolve(this.arr);
+          console.log(id)
         },2000)
       })
 
