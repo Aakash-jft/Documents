@@ -23,3 +23,9 @@ body {
   align-items: center;
   transform: translate(-50%,-50%);
 }
+.table-width{
+  width:300px;
+}
+th{
+  whidth:30px;
+}
