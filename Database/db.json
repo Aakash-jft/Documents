@@ -1,34 +1,3 @@
 {
-  "Employees": [
-    {
-      "name": "aDS",
-      "job": "ASD",
-      "salary": "1234",
-      "id": 2
-    },
-    {
-      "name": "aDS",
-      "job": "",
-      "salary": "1234",
-      "id": 4
-    },
-    {
-      "name": "aDS",
-      "job": "ASD",
-      "salary": "1234",
-      "id": 6
-    },
-    {
-      "name": "aDS",
-      "job": "",
-      "salary": "1234",
-      "id": 7
-    },
-    {
-      "name": "aDS",
-      "job": "",
-      "salary": "1234",
-      "id": 8
-    }
-  ]
+  "Employees": []
 }

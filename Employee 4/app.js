@@ -11,6 +11,16 @@ $(function () {
     apiCalls("get");
   }
 
+  function clear(){
+    Name.val("");
+    Job.val("");
+    Salary.val("");
+  }
+
+  function validate(){
+    return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))
+  }
+
   function employee(name, job, salary) {
     this.name = name;
     this.job = job;
@@ -18,21 +28,27 @@ $(function () {
   }
 
   function show(arr) {
-    $("#table").html(`<tr>
+    $("#table").html(`
+  <thead>
+    <tr>
     <th>Name</th>
     <th>Job</th>
     <th>Salary</th>
     <th>Action</th>
-  </tr>`);
+  </tr>
+  </thead>`);
     arr.forEach((e) => {
-      let tabb = `<tr id="rw-${e.id}"> 
+      let tabb = `
+      <tbody>
+      <tr id="rw-${e.id}"> 
         <td>${e.name}</td>
         <td>${e.job}</td>
         <td>${e.salary}</td>
         <td>
-        <button  class="delete" id ="${e.id}" >delete</button>
-        <button  class = "edit" id ="${e.id}" class="edit">edit</button>
+        <button  class="delete btn btn-danger" id ="${e.id}" >delete</button>
+        <button  class = "edit btn btn-secondary" id ="${e.id}" class="edit">edit</button>
       </td>
+      </tbody>
     </tr>`;
 
       $("#table").append(tabb);
@@ -113,24 +129,46 @@ $(function () {
 
   getshow();
 
+
   if (arr2.length > 0) {
     show(arr2);
   }
 
+
+
+  
   $("#btn").click(async (e) => {
     if (flag == true) {
+
+      if(Name.val()==""||Job.val()==""||Salary.val()==""){
+        alert("Enter valid inputs");
+        return;
+      }
+
       let obj = new employee(Name.val(), Job.val(), Salary.val());
 
       apiCalls("post", obj);
+      clear();
     } else {
+
+      if(Name.val()==""||Job.val()==""||Salary.val()==""){
+        alert("Enter valid inputs");
+        return;
+      }
+
       let obj = new employee(Name.val(), Job.val(), Salary.val());
 
       apiCalls("put", obj);
       $("#btn").html("Add");
 
+      clear();
+
       flag = true;
     }
   });
+
+
+
 
   $("#table").on("click", ".delete", async function () {
     console.log(this, this.id);
@@ -138,6 +176,10 @@ $(function () {
     console.log(id);
     apiCalls("dele");
   });
+
+
+
+
 
   $("#table").on("click", ".edit", async function () {
     $("#btn").html("Edit");
@@ -158,4 +200,7 @@ $(function () {
       alert("Request failed: " + textStatus);
     });
   });
+
+
+
 });
