@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///home/jellyfish/Documents/Employee%204/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee-4</title>
+    <link rel="icon" href="file:///home/jellyfish/Documents/Employee%204/clipart1405563.png" type="image/icon type">
+    <link rel="stylesheet" href="./Employee-4_files/styles.css">
+    <style>
+      table, th, td {
+        border:1px solid black;
+      }
+      </style>
+    <link href="./Employee-4_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputs">
+
+        <div>
+          <label for="name"> Name</label>
+          <input class="form-control" onkeypress="return ((event.charCode &gt;= 65 &amp;&amp; event.charCode &lt;= 90) || (event.charCode &gt;= 97 &amp;&amp; event.charCode &lt;= 122) || (event.charCode == 32))" id="name" placeholder="Enter Name..." type="text">
+        </div>
+        <div>
+          <label for="job"> Job</label>
+          <input class="form-control" onkeypress="return ((event.charCode &gt;= 65 &amp;&amp; event.charCode &lt;= 90) || (event.charCode &gt;= 97 &amp;&amp; event.charCode &lt;= 122) || (event.charCode == 32))" id="job" placeholder="Enter Job Position..." type="text">
+        </div>
+        <div>
+          <label for="salary"> Salary</label>
+          <input class="form-control" id="salary" placeholder="Enter Salary..." type="number">
+        </div>
+  
+        <div>
+          <button class="btn btn-primary add-btn " id="btn">Add</button>
+        </div>
+
+        </div>
+
+
+
+        <div>
+
+      
+      
+        <table class="table table-width table-bordered align-middle" id="table">
+    <thead>
+          <tr>
+            <th>
+            Name
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort
+              </button>
+              <ul class="dropdown-menu " id="name">
+                <li><button class="dropdown-item acc" id="acc" type="button">ACC</button></li>
+                <li><button class="dropdown-item" id="dcc" type="button">DEC</button></li>
+                
+              </ul>
+            </div>
+            </th>
+            <th>Job
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort
+                </button>
+                <ul class="dropdown-menu" id="job" style="">
+                  <li><button class="dropdown-item" type="button" id="acc">ACC</button></li>
+                  <li><button class="dropdown-item" type="button" id="dcc">DEC</button></li>
+                  
+                </ul>
+              </div>
+            </th>
+            <th>Salary
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort
+                </button>
+                <ul class="dropdown-menu" id="salary">
+                  <li><button class="dropdown-item" type="button" id="acc">ACC</button></li>
+                  <li><button class="dropdown-item" type="button" id="dcc">DEC</button></li>
+                  
+                </ul>
+              </div>
+            </th>
+            <th>Action
+              
+               
+            </th>
+          </tr>
+          </thead>
+      <tbody>
+      <tr id="rw-1"> 
+        <td>a</td>
+        <td>b</td>
+        <td>1</td>
+        <td>
+        <button class="delete btn btn-danger" id="1">delete</button>
+        <button class="edit btn btn-secondary" id="1">edit</button>
+      </td>
+      </tr></tbody>
+    
+      <tbody>
+      <tr id="rw-2"> 
+        <td>b</td>
+        <td>c</td>
+        <td>2</td>
+        <td>
+        <button class="delete btn btn-danger" id="2">delete</button>
+        <button class="edit btn btn-secondary" id="2">edit</button>
+      </td>
+      </tr></tbody>
+    
+      <tbody>
+      <tr id="rw-3"> 
+        <td>c</td>
+        <td>d</td>
+        <td>3</td>
+        <td>
+        <button class="delete btn btn-danger" id="3">delete</button>
+        <button class="edit btn btn-secondary" id="3">edit</button>
+      </td>
+      </tr></tbody>
+    
+      <tbody>
+      <tr id="rw-4"> 
+        <td>e</td>
+        <td>f</td>
+        <td>4</td>
+        <td>
+        <button class="delete btn btn-danger" id="4">delete</button>
+        <button class="edit btn btn-secondary" id="4">edit</button>
+      </td>
+      </tr></tbody>
+    
+      <tbody>
+      <tr id="rw-5"> 
+        <td>g</td>
+        <td>h</td>
+        <td>5</td>
+        <td>
+        <button class="delete btn btn-danger" id="5">delete</button>
+        <button class="edit btn btn-secondary" id="5">edit</button>
+      </td>
+      </tr></tbody>
+    </table>
+      </div>
+    </div>
+  
+  <script src="./Employee-4_files/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="./Employee-4_files/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="./Employee-4_files/app.js"></script>
+
+ </body></html>

@@ -20,7 +20,7 @@ $(function () {
   function employee(name, job, salary) {
     this.name = name;
     this.job = job;
-    this.salary = Number(salary);
+    this.salary = salary;
   }
 
   function show(arr) {
@@ -34,8 +34,8 @@ $(function () {
                 Sort
               </button>
               <ul class="dropdown-menu " id="name">
-                <li><button class="dropdown-item acc" value="name" id="acc" type="button">ACC</button></li>
-                <li><button class="dropdown-item dcc" value="name" id="dcc" type="button">DEC</button></li>
+                <li><button class="dropdown-item acc" id="acc" type="button">ACC</button></li>
+                <li><button class="dropdown-item" id="dcc" type="button">DEC</button></li>
                 
               </ul>
             </div>
@@ -46,8 +46,8 @@ $(function () {
                   Sort
                 </button>
                 <ul class="dropdown-menu" id="job">
-                  <li><button class="dropdown-item acc" value="job" type="button" id="acc">ACC</button></li>
-                  <li><button class="dropdown-item dcc" value="job" type="button" id="dcc">DEC</button></li>
+                  <li><button class="dropdown-item acc" type="button" id="acc">ACC</button></li>
+                  <li><button class="dropdown-item" type="button" id="dcc">DEC</button></li>
                   
                 </ul>
               </div>
@@ -58,8 +58,8 @@ $(function () {
                   Sort
                 </button>
                 <ul class="dropdown-menu" id="salary">
-                  <li><button class="dropdown-item acc" value="salary" type="button" id="acc">ACC</button></li>
-                  <li><button class="dropdown-item dcc" value="salary" type="button" id="dcc">DEC</button></li>
+                  <li><button class="dropdown-item acc" type="button" id="acc">ACC</button></li>
+                  <li><button class="dropdown-item" type="button" id="dcc">DEC</button></li>
                   
                 </ul>
               </div>
@@ -118,13 +118,13 @@ $(function () {
             <td>${data.job}</td>
             <td>${data.salary}</td>
             <td>
-            <button  class="delete btn btn-danger" id ="${data.id}" >delete</button>
-            <button  class = "edit btn btn-secondary" id ="${data.id}" class="edit">edit</button>
+            <button  class="delete" id ="${data.id}" >delete</button>
+            <button  class = "edit" id ="${data.id}" class="edit">edit</button>
           </td>
        </tr>`;
         arr2.push(data);
 
-        $("#table").html($("#table").html()+tabb)
+        $("#table").append(tabb);
       });
 
       request.fail(function (jqXHR, textStatus) {
@@ -161,62 +161,31 @@ $(function () {
     }
   }
 
-  function Sort(arr,val,sort){
+  function sortByname(arr,sort){
 
-    if(val=="name"){
-      if(sort=="acc"){
-        arr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-        console.log(arr);
-      }
-      else{
-        arr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
-        console.log(arr);
-      }
-    }
-    else if(val=="job"){
-      if(sort=="acc"){
-        arr.sort((a, b) => a.job.toLowerCase() > b.job.toLowerCase() ? 1 : -1);
-        console.log(arr);
-      }
-      else{
-        arr.sort((a, b) => a.job.toLowerCase() > b.job.toLowerCase() ? -1 : 1);
-        console.log(arr);
-      }
+    if(sort=="acc"){
+      arr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+      console.log(arr);
     }
     else{
-      if(sort=="acc"){
-        arr.sort((a, b) => Number(a.salary) > Number(b.salary) ? 1 : -1);
-        console.log(arr);
-      }
-      else{
-        arr.sort((a, b) => Number(a.salary) > Number(b.salary) ? -1 : 1);
-        console.log(arr);
-      }
-
+      arr.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
+      console.log(arr);
     }
-    
 
     show(arr);
     
   }
 
- async function SortWith(field,order){
-
-   let json = await fetch(`http://localhost:3000/Employees/?_sort=${field}&_order=${order}`);
-   let data = await json.json();
-   show(data);
-
+  function sortBySal(arr){
+    arr.sort((a, b) => a.salary.toLowerCase() > b.salary.toLowerCase() ? -1 : 1);
+    console.log(arr);
   }
 
- function searchData(){
-  let obj = new employee(Name.val(), Job.val(), Number(Salary.val()))
-  let arr =arr2.filter(e=>{if(e.name===obj.name && e.job===obj.job && Number(e.salary)===Number(obj.salary)){return e}});
-  if(arr.length==0){
-    alert("Not found");
-    location.reload();
+  function job(arr){
+    arr.sort((a, b) => a.job.toLowerCase() > b.job.toLowerCase() ? -1 : 1);
+    console.log(arr);
+
   }
-  show(arr);
- }
  
   getshow();
 
@@ -236,7 +205,7 @@ $(function () {
         return;
       }
 
-      let obj = new employee(Name.val(), Job.val(), Number(Salary.val()));
+      let obj = new employee(Name.val(), Job.val(), Salary.val());
 
       apiCalls("post", obj);
 
@@ -260,7 +229,7 @@ $(function () {
     }
   });
 
-$("#search").click(searchData);
+
 
 
   $("#table").on("click", ".delete", async function () {
@@ -295,18 +264,12 @@ $("#search").click(searchData);
   });
 
   $("#table").on("click", ".acc", async function () {
-    // sortByname(arr2,"acc");
-    // console.log("acc");
-    Sort(arr2,this.value,"acc");
-    // SortWith(this.value,"asc")
-
-    console.log(this.value)
+    sortByname(arr2,"acc");
+    console.log("acc");
   })
-  $("#table").on("click", ".dcc", async function () {
-    // sortByname(arr2,"dcc");
-    // console.log("dcc");
-    Sort(arr2,this.value,"dcc");
-    // SortWith(this.value,"desc");
+  $("#table").on("click", "#dcc", async function () {
+    sortByname(arr2,"dcc");
+    console.log("dcc");
   })
 
 
